@@ -1,5 +1,7 @@
 🚀 Projeto Bootcamp PWA: Um Progressive Web App (PWA) moderno e responsivo que oferece uma experiência de aplicativo com funcionalidade offline, instalação na tela inicial e integração com uma API robusta.Este projeto visa demonstrar o domínio dos principais conceitos de PWAs e as melhores práticas de desenvolvimento, incluindo conteinerização com Docker, automação de CI/CD com GitHub Actions e aderência a métricas de performance (Lighthouse).
+
 🌟 Funcionalidades PrincipaisExperiência App-Like (PWA): Instalação direta na tela inicial/desktop, tela de splash customizada, e comportamento standalone.Acesso Offline: Utilização de Service Worker com estratégia para caching de assets e dados.Integração de Dados: Consumo da API para obter dados relevantes sobre.Orquestração com Docker: Execução local simplificada de toda a arquitetura (frontend PWA + backend API) utilizando Docker Compose.CI/CD Automatizado: Pipeline de integração e entrega contínua com GitHub Actions.
+
 🏗️ Arquitetura do ProjetoO projeto segue um padrão monorepo com a seguinte estrutura de diretórios, orquestrada via docker-compose.yml:monorepo-pwa/
 ├─ apps/
 │  ├─ web/                 # 🌐 Frontend PWA 
@@ -7,10 +9,15 @@
 ├─ docker-compose.yml       # Orquestração dos containers
 ├─ .github/workflows/ci.yml # Pipeline de CI/CD
 └─ README.md
+
 🌐 Serviço web (PWA)Desenvolvido a configuração do PWA através do arquivo manifest.webmanifest.Script do Service Worker (service-worker.js) implementando o servidor via Nginx em produção (container Docker).⚙️ Serviço api (Backend)Desenvolvido com expõe endpoints REST/JSON para fornecer dados ao PWA.Endpoints Principais:GET /api/]:
-🚀 Como Executar LocalmenteCertifique-se de ter o Docker e o Docker Compose instalados em sua máquina.Clonar o Repositório:Bashgit clone https://www.youtube.com/watch?v=X49Wz3icO3E
+
+🚀 Como Executar LocalmenteCertifique-se de ter o Docker e o Docker Compose instalados em sua máquina.Clonar o Repositório:Bashgit clone
 cd (pasta do projeto)
 Configurar Variáveis de Ambiente (Opcional):Se a sua API/PWA depender de chaves externas (ex: OpenWeatherMap API Key), crie um arquivo .env na raiz ou siga as instruções específicas.Rodar os Containers com Docker Compose:Bashdocker compose up --build
-Isso irá construir as imagens Docker (web e api) e iniciará os serviços.Acessar o PWA:O PWA estará acessível em:Frontend (PWA): http://localhost:8080Backend (API): http://localhost:3000🧪 TestesOs testes garantem a qualidade e a funcionalidade da aplicação:Testes Unitários:Localizados em apps/web e apps/api.Executados via CI e localmente com npm test.Testes End-to-End (E2E) com Playwright:Verificam o carregamento correto do PWA e a comunicação bem-sucedida com a API.Exemplo de teste: PWA carrega e consome API com sucesso.Para rodar localmente (após docker compose up): npx playwright test
+
+🧪 TestesOs testes garantem a qualidade e a funcionalidade da aplicação:Testes Unitários:Localizados em apps/web e apps/api.Executados via CI e localmente com npm test.Testes End-to-End (E2E) com Playwright:Verificam o carregamento correto do PWA e a comunicação bem-sucedida com a API.Exemplo de teste: PWA carrega e consome API com sucesso.Para rodar localmente (após docker compose up): npx playwright test
+
 🌐 Publicação (GitHub Pages)O PWA está publicado e acessível via HTTPS no GitHub Pages, o que permite o registro do Service Worker e a instalação.URL Pública do PWA: 
+
 📲 Como Instalar o PWAAcesse o link acima em um dispositivo compatível (Chrome, Edge, ou Firefox em Android/Desktop, Safari em iOS).Procure o botão/opção de "Instalar Aplicativo" (ícone de + ou três pontos) na barra de endereço do navegador.Confirme a instalação para te-lo na sua tela inicial/desktop, funcionando como um aplicativo nativo.🤖 Integração Contínua (CI/CD)O arquivo .github/workflows/ci.yml define o pipeline de CI/CD:JobDescriçãoStatusbuild-testInstala dependências, executa testes unitários/E2E e constrói o PWA.

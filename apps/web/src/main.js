@@ -1,0 +1,1 @@
+async function load(){const api="http://localhost:3000";const r=await fetch(api+"/api/hello");const d=await r.json();document.getElementById("api-response").innerText=d.msg;}load();
